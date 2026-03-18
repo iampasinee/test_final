@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Car System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <h1>Sales Report</h1>
+
+    <table>
+        <tr>
+            <th>Summary</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Total Car Models</td>
+            <td><%= summary.totalCarModels %></td>
+        </tr>
+        <tr>
+            <td>Total Stock (All Models)</td>
+            <td><%= summary.totalStock %></td>
+        </tr>
+        <tr>
+            <td>Total Sold Cars</td>
+            <td><%= summary.totalSoldCars %></td>
+        </tr>
+        <tr>
+            <td>Total Sales Amount</td>
+            <td><%= Number(summary.totalSalesAmount).toLocaleString('en-US') %></td>
+        </tr>
+    </table>
+
+    <h1>Sold Cars by Brand and Model</h1>
+
+    <table>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Sold Count</th>
+        </tr>
+        <% if (reports.length === 0) { %>
+            <tr>
+                <td colspan="3">No sales data.</td>
+            </tr>
+        <% } %>
+        <% reports.forEach(item => { %>
+            <tr>
+                <td><%= item.brand %></td>
+                <td><%= item.model %></td>
+                <td><%= item.sold_count %></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

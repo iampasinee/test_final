@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sale Car System</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	 <%- include('../partials/header') %>
+	<h1>Customer Management</h1>
+
+	<div class="list-toolbar">
+		<div class="action-header">
+			<a href="/customer/add" class="btn-add"> Add Customer +</a>
+		</div>
+	</div>
+
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Action</th>
+		</tr>
+		<% customers.forEach(customer => { %>
+			<tr>
+				<td><%= customer.name %></td>
+				<td><%= customer.phone %></td>
+				<td>
+					<a href="/customer/edit/<%= customer.id %>">Edit</a>
+					<a href="/customer/delete/<%= customer.id %>" onclick="return confirm('Do you want to delete?')">Delete</a>
+				</td>
+			</tr>
+		<% }) %>
+	</table>
+</body>
+</html>

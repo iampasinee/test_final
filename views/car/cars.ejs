@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Car System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <%- include('../partials/header') %>
+    <h1>Sale Car System</h1>
+
+    <div class="list-toolbar">
+        <div class="action-header">
+            <a href="/car/add" class="btn-add"> Add Car +</a>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+        </tr>
+        <% cars.forEach(car => { %>
+            <tr>
+                <td><%= car.brand %></td>
+                <td><%= car.model %></td>
+                <td><%= car.price %></td>
+                <td><%= car.stock %></td>
+                <td>
+                    <a href="/car/edit/<%= car.id %>">Edit</a>
+                    <a href="/car/delete/<%= car.id %>" onclick="return confirm('Do you want to delete?')">Delete</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sale Car System</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<%- include('../partials/header') %>
+	<h1>Sale History</h1>
+
+	<div class="list-toolbar">
+		<div class="action-header">
+			<a href="/sale/add" class="btn-add"> Add Sale +</a>
+		</div>
+	</div>
+
+	<table>
+		<tr>
+			<th>Customer</th>
+			<th>Car</th>
+			<th>Sale Price</th>
+			<th>Sale Date</th>
+			<th>Action</th>
+		</tr>
+		<% sales.forEach(sale => { %>
+			<tr>
+				<td><%= sale.customer ? sale.customer.name : '-' %></td>
+				<td>
+					<%= sale.car ? `${sale.car.brand} ${sale.car.model}` : '-' %>
+				</td>
+				<td><%= sale.sale_price %></td>
+				<td><%= new Date(sale.sale_date).toLocaleDateString('th-TH') %></td>
+				<td>
+					<a href="/sale/edit/<%= sale.id %>">Edit</a>
+					<a href="/sale/delete/<%= sale.id %>" onclick="return confirm('Do you want to cancel this bill?')">Delete</a>
+				</td>
+			</tr>
+		<% }) %>
+	</table>
+</body>
+</html>

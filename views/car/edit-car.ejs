@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Car System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <%- include('../partials/header') %>
+    <h1>Edit Car </h1>
+    <form action="/car/edit/<%= car.id %>" method="post">
+        <div class="form-group">
+            <label for="brand">Brand: </label>
+            <select name="brand" id="brand" required>
+                <option value="<%= car.brand %>" ><%= car.brand %></option>
+                <% brand = ['Toyota', 'Honda', 'BYD']; 
+                    brand.forEach(b => { 
+                        if(b != car.brand){ %>
+                <option value="<%= b %>" ><%= b %></option>
+                <% }}) %>
+            </select>
+        </div>
+        <div>
+            <label for="model">Model: </label>
+            <input type="text" name="model" id="model" value="<%= car.model %>" required>
+        </div>
+        <div>
+            <label for="price">Price: </label>
+            <input type="number" name="price" id="price" value="<%= car.price %>" min="0" required>
+        </div>
+        <div>
+            <label for="stock">Stock: </label>
+            <input type="number" name="stock" id="stock" value="<%= car.stock %>" min="0" required>
+        </div>
+        <button type="submit" class="btn-submit">Edit Car</button>
+        <a href="/car"><button type="button" class="btn-back">Back to Page</button></a>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sale Car System</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<%- include('../partials/header') %>
+	<h1>Edit Customer</h1>
+	<form action="/customer/edit/<%= customer.id %>" method="post">
+		<div>
+			<label for="name">Name: </label>
+			<input type="text" name="name" id="name" value="<%= customer.name %>" required>
+		</div>
+		<div>
+			<label for="phone">Phone: </label>
+			<input type="text" name="phone" id="phone" value="<%= customer.phone %>" required>
+		</div>
+		<button type="submit" class="btn-submit">Edit Customer</button>
+		<a href="/customer"><button type="button" class="btn-back">Back to Page</button></a>
+	</form>
+</body>
+</html>

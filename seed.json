@@ -1,0 +1,58 @@
+{
+    "customers": [
+        {
+            "id": 1,
+            "name": "สมชาย ใจดี",
+            "phone": "0811111111"
+        },
+        {
+            "id": 2,
+            "name": "สมหญิง รักดี",
+            "phone": "0822222222"
+        },
+        {
+            "id": 3,
+            "name": "บริษัท เอบีซี",
+            "phone": "0833333333"
+        }
+    ],
+    "cars": [
+        {
+            "id": 1,
+            "brand": "Toyota",
+            "model": "Yaris Cross",
+            "price": 789000,
+            "stock": 5
+        },
+        {
+            "id": 2,
+            "brand": "Honda",
+            "model": "Civic RS",
+            "price": 1259000,
+            "stock": 2
+        },
+        {
+            "id": 3,
+            "brand": "BYD",
+            "model": "Dolphin",
+            "price": 859999,
+            "stock": 0
+        }
+    ],
+    "sales": [
+        {
+            "id": 1,
+            "sale_price": 1259000,
+            "sale_date": "2026-03-01T10:00:00Z",
+            "car_id": 2,
+            "customer_id": 1
+        },
+        {
+            "id": 2,
+            "sale_price": 780000,
+            "sale_date": "2026-03-10T14:30:00Z",
+            "car_id": 1,
+            "customer_id": 2
+        }
+    ]
+}

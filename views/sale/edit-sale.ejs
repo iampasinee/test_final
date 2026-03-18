@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Car System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <h1>Edit Sale Price</h1>
+
+    <form action="/sale/edit/<%= sale.id %>" method="post">
+        <div>
+            <label>Customer: </label>
+            <input type="text" value="<%= sale.customer ? sale.customer.name : '-' %>" disabled>
+        </div>
+
+        <div>
+            <label>Car: </label>
+            <input type="text" value="<%= sale.car ? `${sale.car.brand} ${sale.car.model}` : '-' %>" disabled>
+        </div>
+
+        <div>
+            <label>Sale Date: </label>
+            <input type="text" value="<%= new Date(sale.sale_date).toLocaleDateString('th-TH') %>" disabled>
+        </div>
+
+        <div>
+            <label for="sale_price">Sale Price: </label>
+            <input type="number" name="sale_price" id="sale_price" min="0" value="<%= sale.sale_price %>" required>
+        </div>
+
+        <button type="submit" class="btn-submit">Update Price</button>
+        <a href="/sale"><button type="button" class="btn-back">Back to Page</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sale Car System</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<%- include('../partials/header') %>
+	<h1>Add Sale</h1>
+
+	<form action="/sale/add" method="post">
+		<div class="form-group">
+			<label for="customer_id">Customer: </label>
+			<select name="customer_id" id="customer_id" required>
+				<option value="" disabled selected>-- Select Customer --</option>
+				<% customers.forEach(customer => { %>
+					<option value="<%= customer.id %>"><%= customer.name %> (<%= customer.phone %>)</option>
+				<% }) %>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="car_id">Model: </label>
+			<select name="car_id" id="car_id" required>
+				<option value="" disabled selected>-- Select Car --</option>
+				<% models.forEach(car => { %>
+					<option value="<%= car.id %>"><%= car.brand %> <%= car.model %> | Price: <%= car.price %> | Stock: <%= car.stock %></option>
+				<% }) %>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="sale_date_display">Sale Date: </label>
+			<input type="text" id="sale_date_display" value="<%= new Date().toLocaleDateString('th-TH') %>" disabled>
+		</div>
+
+		<button type="submit" class="btn-submit">Save Sale</button>
+		<a href="/sale"><button type="button" class="btn-back">Back to Page</button></a>
+	</form>
+</body>
+</html>
