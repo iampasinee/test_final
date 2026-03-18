@@ -58,16 +58,22 @@ app.get('/sale/add', async (req, res) => {
         ]);
 
         const customers = customerRes.data; // ดึงข้อมูลลูกค้า
-        const cars = carRes.data.filter(car => car.stock > 0); // ดึงข้อมูลรถยนต์ที่มี stock > 0 เท่านั้น
-        const selectedCustomerId = req.query.customer_id || ''; // ดึง customer_id จาก query string (ถ้ามี)
-        const selectedBrand = req.query.brand || ''; // ดึง brand ที่เลือกจาก query string (ถ้ามี)
-        const selectedCarId = req.query.car_id || ''; // ดึง car_id ที่เลือกจาก query string (ถ้ามี)
+        // ดึงข้อมูลรถยนต์ที่มี stock > 0 เท่านั้น
+        const cars = carRes.data.filter(car => car.stock > 0); 
+        // ดึง customer_id จาก query string (ถ้ามี) ถ้าไม่มีจะเป็น string ว่าง
+        const selectedCustomerId = req.query.customer_id || ''; 
+        // ดึง brand ที่เลือกจาก query string (ถ้ามี)
+        const selectedBrand = req.query.brand || ''; 
+        // ดึง car_id ที่เลือกจาก query string (ถ้ามี)
+        const selectedCarId = req.query.car_id || ''; 
 
-        const brands = [...new Set(cars.map(car => car.brand))]; // สร้างรายการแบรนด์ที่ไม่ซ้ำกันจากรถยนต์ที่มี stock > 0
-        const models = selectedBrand ? cars.filter(car => car.brand === selectedBrand) : cars; // ถ้าไม่เลือกแบรนด์ ให้แสดงรถทั้งหมดสำหรับการเลือกครั้งเดียว
+        // สร้างรายการแบรนด์ที่ไม่ซ้ำกันจากรถยนต์ที่มี stock > 0
+        const brands = [...new Set(cars.map(car => car.brand))]; 
+        // ถ้าไม่เลือกแบรนด์ ให้แสดงรถทั้งหมดสำหรับการเลือกครั้งเดียว
+        const models = selectedBrand ? cars.filter(car => car.brand === selectedBrand) : cars; 
         const selectedCar = selectedCarId  // ค้นหารถยนต์ที่ถูกเลือกจาก car_id (ถ้ามี)
-            ? cars.find(car => String(car.id) === String(selectedCarId)) // เปรียบเทียบเป็น string เพื่อความแน่นอนในการเปรียบเทียบ ID
-            : null;
+            ? cars.find(car => String(car.id) === String(selectedCarId)) 
+            : null; // เปรียบเทียบเป็น string เพื่อความแน่นอนในการเปรียบเทียบ ID
 
         res.render('sale/add-sale', {
             customers,
